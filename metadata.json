@@ -1,0 +1,8 @@
+{
+  "name": "币境幻创",
+  "description": "一个由Gemini AI驱动的创意工具箱。您可以设计个性化的3D硬币、生成和编辑图像、与AI助手聊天，并通过 grounded search 获取最新信息。",
+  "requestFramePermissions": [
+    "microphone",
+    "geolocation"
+  ]
+}
