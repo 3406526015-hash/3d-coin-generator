@@ -1,27 +1,39 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>币境幻创</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-
-<link rel="stylesheet" href="/index.css">
-  <script type="importmap">
-{
-  "imports": {
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.27.0",
-    "react-markdown": "https://aistudiocdn.com/react-markdown@^10.1.0"
-  }
-}
-</script>
-  <script type="module" crossorigin src="/3d-coin-generator/assets/index-Db7E1zGf.js"></script>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="./vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>币镜幻创</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./index.css" />
+  <script type="module" crossorigin src="/3d-coin-generator/assets/index-BNmB2zj0.js"></script>
 </head>
-  <body class="bg-gradient-to-br from-rose-100 to-teal-100 text-gray-800 font-sans">
-    <div id="root"></div>
-  </body>
+<body class="bg-gradient-to-br from-rose-100 to-teal-100 text-gray-800 font-sans">
+
+  <!-- 输入API Key区 -->
+  <div style="padding:10px; background:#fffbe6; border-bottom:1px solid #ddd; text-align:center;">
+    <input id="apiKeyInput" type="password" placeholder="请输入你的 API Key" style="padding:6px; width:280px;">
+    <button id="saveApiKeyBtn" style="padding:6px 12px; background:#f472b6; color:white; border:none; border-radius:4px; cursor:pointer;">保存 Key</button>
+  </div>
+
+  <div id="root"></div>
+
+  <script>
+    const saveBtn = document.getElementById('saveApiKeyBtn');
+    const input = document.getElementById('apiKeyInput');
+    saveBtn.onclick = () => {
+      localStorage.setItem('GEN_API_KEY', input.value.trim());
+      alert('✅ API Key 已保存到浏览器，请点击“开始生成”。');
+    };
+    window.getApiKey = function() {
+      const k = localStorage.getItem('GEN_API_KEY');
+      if (!k) {
+        alert('❌ 缺少 API Key，请先点击上方“保存 Key”。');
+        throw new Error('Missing API Key');
+      }
+      return k;
+    };
+  </script>
+
+</body>
 </html>
